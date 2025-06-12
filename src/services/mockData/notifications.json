@@ -1,0 +1,106 @@
+[
+  {
+    "id": "notif_1",
+    "type": "like",
+    "userId": "user_2",
+    "postId": "post_1",
+    "message": "liked your post",
+    "isRead": false,
+    "createdAt": "2024-01-15T10:30:00Z"
+  },
+  {
+    "id": "notif_2",
+    "type": "comment",
+    "userId": "user_3",
+    "postId": "post_2",
+    "message": "commented on your post",
+    "isRead": false,
+    "createdAt": "2024-01-15T09:45:00Z"
+  },
+  {
+    "id": "notif_3",
+    "type": "follow",
+    "userId": "user_4",
+    "message": "started following you",
+    "isRead": true,
+    "createdAt": "2024-01-15T08:20:00Z"
+  },
+  {
+    "id": "notif_4",
+    "type": "like",
+    "userId": "user_5",
+    "postId": "post_3",
+    "message": "liked your post",
+    "isRead": false,
+    "createdAt": "2024-01-14T16:15:00Z"
+  },
+  {
+    "id": "notif_5",
+    "type": "comment",
+    "userId": "user_6",
+    "postId": "post_1",
+    "message": "commented on your post",
+    "isRead": true,
+    "createdAt": "2024-01-14T14:30:00Z"
+  },
+  {
+    "id": "notif_6",
+    "type": "follow",
+    "userId": "user_7",
+    "message": "started following you",
+    "isRead": false,
+    "createdAt": "2024-01-14T12:45:00Z"
+  },
+  {
+    "id": "notif_7",
+    "type": "like",
+    "userId": "user_8",
+    "postId": "post_4",
+    "message": "liked your post",
+    "isRead": true,
+    "createdAt": "2024-01-14T11:20:00Z"
+  },
+  {
+    "id": "notif_8",
+    "type": "comment",
+    "userId": "user_9",
+    "postId": "post_5",
+    "message": "commented on your post",
+    "isRead": false,
+    "createdAt": "2024-01-13T18:30:00Z"
+  },
+  {
+    "id": "notif_9",
+    "type": "follow",
+    "userId": "user_10",
+    "message": "started following you",
+    "isRead": true,
+    "createdAt": "2024-01-13T15:45:00Z"
+  },
+  {
+    "id": "notif_10",
+    "type": "like",
+    "userId": "user_2",
+    "postId": "post_6",
+    "message": "liked your post",
+    "isRead": false,
+    "createdAt": "2024-01-13T13:20:00Z"
+  },
+  {
+    "id": "notif_11",
+    "type": "comment",
+    "userId": "user_3",
+    "postId": "post_7",
+    "message": "commented on your post",
+    "isRead": true,
+    "createdAt": "2024-01-12T20:15:00Z"
+  },
+  {
+    "id": "notif_12",
+    "type": "follow",
+    "userId": "user_11",
+    "message": "started following you",
+    "isRead": false,
+    "createdAt": "2024-01-12T17:30:00Z"
+  }
+]

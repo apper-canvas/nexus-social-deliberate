@@ -3,6 +3,7 @@ import ExplorePage from '@/components/pages/ExplorePage';
 import CreatePostPage from '@/components/pages/CreatePostPage';
 import ProfilePage from '@/components/pages/ProfilePage';
 import MessagesPage from '@/components/pages/MessagesPage';
+import NotificationsPage from '@/components/pages/NotificationsPage';
 export const routes = {
   home: {
     id: 'home',
@@ -18,12 +19,12 @@ export const routes = {
     icon: 'Search',
     component: ExplorePage
   },
-  notifications: {
+notifications: {
     id: 'notifications',
     label: 'Notifications',
     path: '/notifications',
     icon: 'Bell',
-    component: null // To be implemented
+    component: NotificationsPage
   },
 messages: {
     id: 'messages',

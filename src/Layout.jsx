@@ -1,38 +1,186 @@
 import { Outlet, NavLink, useLocation } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import ApperIcon from './components/ApperIcon'
+import { useState, useEffect } from 'react'
 
 function Layout() {
   const location = useLocation()
+  const [currentUser, setCurrentUser] = useState(null)
 
-  const navItems = [
-    { path: '/', icon: 'Home', label: 'Home' },
+  // Mock user data - in real app this would come from auth context/service
+  useEffect(() => {
+    setCurrentUser({
+      id: 1,
+      name: 'John Doe',
+      username: '@johndoe',
+      avatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150&h=150&fit=crop&crop=faces',
+      followers: 1234,
+      following: 567,
+      posts: 89
+    })
+  }, [])
+
+  const mainNavItems = [
+    { path: '/', icon: 'Home', label: 'Feed' },
     { path: '/explore', icon: 'Search', label: 'Explore' },
-    { path: '/create', icon: 'Plus', label: 'Create' },
-    { path: '/profile', icon: 'User', label: 'Profile' }
+    { path: '/notifications', icon: 'Bell', label: 'Notifications' },
+    { path: '/messages', icon: 'MessageCircle', label: 'Messages' },
+    { path: '/create', icon: 'Plus', label: 'Direct' },
+    { path: '/stats', icon: 'BarChart3', label: 'Stats' }
   ]
 
-return (
-    <div className="h-screen flex flex-col overflow-hidden bg-background">
-      {/* Header */}
-      <header className="flex-shrink-0 h-16 bg-background/95 backdrop-blur border-b border-gray-800 z-40">
-        <div className="max-w-md sm:max-w-lg md:max-w-2xl lg:max-w-4xl xl:max-w-6xl mx-auto px-4 h-full flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 rounded-lg gradient-bg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">N</span>
+  const bottomNavItems = [
+    { path: '/settings', icon: 'Settings', label: 'Settings' },
+    { path: '/logout', icon: 'LogOut', label: 'Logout', action: 'logout' }
+  ]
+
+  const handleLogout = () => {
+    // Handle logout logic
+    console.log('Logout clicked')
+  }
+
+  return (
+    <div className="h-screen flex overflow-hidden bg-background">
+      {/* Left Sidebar */}
+      <aside className="flex-shrink-0 w-64 bg-surface/95 backdrop-blur border-r border-gray-700 sticky top-0 h-full overflow-y-auto">
+        <div className="p-6">
+          {/* Logo */}
+          <div className="flex items-center space-x-3 mb-8">
+            <div className="w-10 h-10 rounded-xl gradient-bg flex items-center justify-center">
+              <span className="text-white font-bold text-lg">N</span>
             </div>
-            <h1 className="text-xl font-heading font-bold gradient-text">Nexus</h1>
+            <h1 className="text-2xl font-heading font-bold gradient-text">Nexus</h1>
           </div>
-          
-          <button className="p-2 hover:bg-surface rounded-lg transition-colors">
-            <ApperIcon name="Bell" size={20} className="text-gray-400" />
-          </button>
+
+          {/* Profile Preview */}
+          {currentUser && (
+            <div className="mb-8 p-4 bg-gray-800/50 rounded-xl border border-gray-700">
+              <NavLink to="/profile" className="block group">
+                <div className="flex items-center space-x-3 mb-3">
+                  <div className="relative">
+                    <img 
+                      src={currentUser.avatar} 
+                      alt={currentUser.name}
+                      className="w-12 h-12 rounded-full object-cover ring-2 ring-gray-600 group-hover:ring-primary transition-colors"
+                    />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-semibold text-white text-sm truncate">{currentUser.name}</h3>
+                    <p className="text-gray-400 text-xs">{currentUser.username}</p>
+                  </div>
+                </div>
+                
+                <div className="grid grid-cols-3 gap-2 text-center">
+                  <div>
+                    <div className="text-white font-semibold text-sm">{currentUser.posts}</div>
+                    <div className="text-gray-400 text-xs">Posts</div>
+                  </div>
+                  <div>
+                    <div className="text-white font-semibold text-sm">{currentUser.followers}</div>
+                    <div className="text-gray-400 text-xs">Followers</div>
+                  </div>
+                  <div>
+                    <div className="text-white font-semibold text-sm">{currentUser.following}</div>
+                    <div className="text-gray-400 text-xs">Following</div>
+                  </div>
+                </div>
+              </NavLink>
+            </div>
+          )}
+
+          {/* Main Navigation */}
+          <nav className="space-y-2 mb-8">
+            {mainNavItems.map((item) => {
+              const isActive = item.path === '/' 
+                ? location.pathname === '/'
+                : location.pathname.startsWith(item.path)
+              
+              return (
+                <NavLink
+                  key={item.path}
+                  to={item.path}
+                  className={`flex items-center space-x-3 px-4 py-3 rounded-xl transition-all group ${
+                    isActive 
+                      ? 'bg-gradient-to-r from-primary to-secondary text-white' 
+                      : 'text-gray-400 hover:text-white hover:bg-gray-800/50'
+                  }`}
+                >
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <ApperIcon 
+                      name={item.icon} 
+                      size={20} 
+                      className={isActive ? 'text-white' : 'text-gray-400 group-hover:text-white'}
+                    />
+                  </motion.div>
+                  <span className="font-medium">{item.label}</span>
+                </NavLink>
+              )
+            })}
+          </nav>
+
+          {/* Bottom Navigation */}
+          <div className="border-t border-gray-700 pt-4">
+            <nav className="space-y-2">
+              {bottomNavItems.map((item) => {
+                const isActive = location.pathname.startsWith(item.path)
+                
+                if (item.action === 'logout') {
+                  return (
+                    <button
+                      key={item.path}
+                      onClick={handleLogout}
+                      className="w-full flex items-center space-x-3 px-4 py-3 rounded-xl text-gray-400 hover:text-white hover:bg-gray-800/50 transition-all group"
+                    >
+                      <motion.div
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <ApperIcon 
+                          name={item.icon} 
+                          size={20} 
+                          className="text-gray-400 group-hover:text-white"
+                        />
+                      </motion.div>
+                      <span className="font-medium">{item.label}</span>
+                    </button>
+                  )
+                }
+                
+                return (
+                  <NavLink
+                    key={item.path}
+                    to={item.path}
+                    className={`flex items-center space-x-3 px-4 py-3 rounded-xl transition-all group ${
+                      isActive 
+                        ? 'bg-gradient-to-r from-primary to-secondary text-white' 
+                        : 'text-gray-400 hover:text-white hover:bg-gray-800/50'
+                    }`}
+                  >
+                    <motion.div
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <ApperIcon 
+                        name={item.icon} 
+                        size={20} 
+                        className={isActive ? 'text-white' : 'text-gray-400 group-hover:text-white'}
+                      />
+                    </motion.div>
+                    <span className="font-medium">{item.label}</span>
+                  </NavLink>
+                )
+              })}
+            </nav>
+          </div>
         </div>
-      </header>
+      </aside>
 
       {/* Main Content */}
       <main className="flex-1 overflow-y-auto">
-        <div className="max-w-md sm:max-w-lg md:max-w-2xl lg:max-w-4xl xl:max-w-6xl mx-auto min-h-full">
+        <div className="max-w-4xl mx-auto min-h-full p-6">
           <motion.div
             key={location.pathname}
             initial={{ opacity: 0, y: 20 }}
@@ -45,92 +193,6 @@ return (
           </motion.div>
         </div>
       </main>
-
-      {/* Bottom Navigation */}
-      <nav className="flex-shrink-0 bg-surface/95 backdrop-blur border-t border-gray-700 z-40 md:hidden">
-        <div className="max-w-md mx-auto px-4 py-2">
-          <div className="flex items-center justify-around">
-            {navItems.map((item) => {
-              const isActive = item.path === '/' 
-                ? location.pathname === '/'
-                : location.pathname.startsWith(item.path)
-              
-              return (
-                <NavLink
-                  key={item.path}
-                  to={item.path}
-                  className="flex flex-col items-center py-2 px-3 rounded-lg transition-all"
-                >
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className={`p-2 rounded-lg transition-colors ${
-                      isActive 
-                        ? 'bg-gradient-to-r from-primary to-secondary' 
-                        : 'hover:bg-gray-700'
-                    }`}
-                  >
-                    <ApperIcon 
-                      name={item.icon} 
-                      size={20} 
-                      className={isActive ? 'text-white' : 'text-gray-400'}
-                    />
-                  </motion.div>
-                  <span className={`text-xs mt-1 ${
-                    isActive ? 'text-white' : 'text-gray-400'
-                  }`}>
-                    {item.label}
-                  </span>
-                </NavLink>
-              )
-            })}
-          </div>
-        </div>
-      </nav>
-
-      {/* Desktop Side Navigation */}
-      <nav className="hidden md:block fixed left-4 top-1/2 transform -translate-y-1/2 z-40">
-        <div className="bg-surface/95 backdrop-blur rounded-xl border border-gray-700 p-2">
-          <div className="flex flex-col space-y-2">
-            {navItems.map((item) => {
-              const isActive = item.path === '/' 
-                ? location.pathname === '/'
-                : location.pathname.startsWith(item.path)
-              
-              return (
-                <NavLink
-                  key={item.path}
-                  to={item.path}
-                  className="group relative"
-                >
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className={`p-3 rounded-lg transition-colors ${
-                      isActive 
-                        ? 'bg-gradient-to-r from-primary to-secondary' 
-                        : 'hover:bg-gray-700'
-                    }`}
-                  >
-                    <ApperIcon 
-                      name={item.icon} 
-                      size={24} 
-                      className={isActive ? 'text-white' : 'text-gray-400'}
-                    />
-                  </motion.div>
-                  
-                  {/* Tooltip */}
-                  <div className="absolute left-full ml-2 top-1/2 transform -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-                    <div className="bg-gray-900 text-white text-sm px-2 py-1 rounded whitespace-nowrap">
-                      {item.label}
-                    </div>
-                  </div>
-                </NavLink>
-              )
-            })}
-          </div>
-        </div>
-      </nav>
     </div>
   )
 }

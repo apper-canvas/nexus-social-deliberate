@@ -6,31 +6,59 @@ import ProfilePage from '@/components/pages/ProfilePage';
 export const routes = {
   home: {
     id: 'home',
-    label: 'Home',
+    label: 'Feed',
     path: '/',
     icon: 'Home',
-component: HomePage
+    component: HomePage
   },
   explore: {
     id: 'explore',
     label: 'Explore',
     path: '/explore',
     icon: 'Search',
-component: ExplorePage
+    component: ExplorePage
+  },
+  notifications: {
+    id: 'notifications',
+    label: 'Notifications',
+    path: '/notifications',
+    icon: 'Bell',
+    component: null // To be implemented
+  },
+  messages: {
+    id: 'messages',
+    label: 'Messages',
+    path: '/messages',
+    icon: 'MessageCircle',
+    component: null // To be implemented
   },
   create: {
     id: 'create',
-    label: 'Create',
+    label: 'Direct',
     path: '/create',
     icon: 'Plus',
-component: CreatePostPage
+    component: CreatePostPage
+  },
+  stats: {
+    id: 'stats',
+    label: 'Stats',
+    path: '/stats',
+    icon: 'BarChart3',
+    component: null // To be implemented
   },
   profile: {
     id: 'profile',
     label: 'Profile',
     path: '/profile',
     icon: 'User',
-component: ProfilePage
+    component: ProfilePage
+  },
+  settings: {
+    id: 'settings',
+    label: 'Settings',
+    path: '/settings',
+    icon: 'Settings',
+    component: null // To be implemented
   }
 }
 

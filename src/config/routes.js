@@ -2,7 +2,7 @@ import HomePage from '@/components/pages/HomePage';
 import ExplorePage from '@/components/pages/ExplorePage';
 import CreatePostPage from '@/components/pages/CreatePostPage';
 import ProfilePage from '@/components/pages/ProfilePage';
-
+import MessagesPage from '@/components/pages/MessagesPage';
 export const routes = {
   home: {
     id: 'home',
@@ -25,12 +25,12 @@ export const routes = {
     icon: 'Bell',
     component: null // To be implemented
   },
-  messages: {
+messages: {
     id: 'messages',
     label: 'Messages',
     path: '/messages',
     icon: 'MessageCircle',
-    component: null // To be implemented
+    component: MessagesPage
   },
   create: {
     id: 'create',

@@ -1,0 +1,222 @@
+{
+  "conversations": [
+    {
+      "id": "conv-1",
+      "user": {
+        "id": "user-2",
+        "name": "Sarah Johnson",
+        "username": "sarahj",
+        "avatar": "https://ui-avatars.com/api/?name=Sarah+Johnson&background=e3f2fd&color=1976d2&size=128",
+        "isOnline": true
+      },
+      "lastMessage": {
+        "id": "msg-4",
+        "content": "That sounds great! Let me know when you're free.",
+        "createdAt": "2024-01-15T14:30:00Z",
+        "senderId": "user-2"
+      },
+      "unreadCount": 2,
+      "createdAt": "2024-01-10T08:00:00Z",
+      "updatedAt": "2024-01-15T14:30:00Z"
+    },
+    {
+      "id": "conv-2",
+      "user": {
+        "id": "user-3",
+        "name": "Mike Chen",
+        "username": "mikechen",
+        "avatar": "https://ui-avatars.com/api/?name=Mike+Chen&background=f3e5f5&color=7b1fa2&size=128",
+        "isOnline": false
+      },
+      "lastMessage": {
+        "id": "msg-7",
+        "content": "Thanks for sharing the photos!",
+        "createdAt": "1/14/2024 4:45:00 PMZ",
+        "senderId": "current-user"
+      },
+      "unreadCount": 0,
+      "createdAt": "2024-01-12T10:30:00Z",
+      "updatedAt": "2024-01-14T16:45:00Z"
+    },
+    {
+      "id": "conv-3",
+      "user": {
+        "id": "user-4",
+        "name": "Emma Wilson",
+        "username": "emmaw",
+        "avatar": "https://ui-avatars.com/api/?name=Emma+Wilson&background=e8f5e8&color=388e3c&size=128",
+        "isOnline": true
+      },
+      "lastMessage": {
+        "id": "msg-12",
+        "content": "Can't wait to see you tomorrow! 🎉",
+        "createdAt": "2024-01-13T20:15:00Z",
+        "senderId": "user-4"
+      },
+      "unreadCount": 1,
+      "createdAt": "2024-01-13T09:00:00Z",
+      "updatedAt": "2024-01-13T20:15:00Z"
+    },
+    {
+      "id": "conv-4",
+      "user": {
+        "id": "user-5",
+        "name": "Alex Rodriguez",
+        "username": "alexr",
+        "avatar": "https://ui-avatars.com/api/?name=Alex+Rodriguez&background=fff3e0&color=f57c00&size=128",
+        "isOnline": false
+      },
+      "lastMessage": {
+        "id": "msg-15",
+        "content": "The meeting went well, I'll send you the notes later.",
+        "createdAt": "2024-01-12T17:20:00Z",
+        "senderId": "user-5"
+      },
+      "unreadCount": 0,
+      "createdAt": "2024-01-11T14:00:00Z",
+      "updatedAt": "2024-01-12T17:20:00Z"
+    }
+  ],
+  "messages": [
+    {
+      "id": "msg-1",
+      "conversationId": "conv-1",
+      "senderId": "current-user",
+      "content": "Hey Sarah! How's your day going?",
+      "attachment": null,
+      "createdAt": "2024-01-15T10:00:00Z",
+      "isRead": true
+    },
+    {
+      "id": "msg-2",
+      "conversationId": "conv-1",
+      "senderId": "user-2",
+      "content": "Hi! Pretty good, just finished a big project. How about you?",
+      "attachment": null,
+      "createdAt": "2024-01-15T10:15:00Z",
+      "isRead": false
+    },
+    {
+      "id": "msg-3",
+      "conversationId": "conv-1",
+      "senderId": "current-user",
+      "content": "That's awesome! I was thinking we could grab coffee this weekend?",
+      "attachment": null,
+      "createdAt": "2024-01-15T14:00:00Z",
+      "isRead": true
+    },
+    {
+      "id": "msg-4",
+      "conversationId": "conv-1",
+      "senderId": "user-2",
+      "content": "That sounds great! Let me know when you're free.",
+      "attachment": null,
+      "createdAt": "2024-01-15T14:30:00Z",
+      "isRead": false
+    },
+    {
+      "id": "msg-5",
+      "conversationId": "conv-2",
+      "senderId": "user-3",
+      "content": "Did you see the game last night?",
+      "attachment": null,
+      "createdAt": "2024-01-14T15:30:00Z",
+      "isRead": true
+    },
+    {
+      "id": "msg-6",
+      "conversationId": "conv-2",
+      "senderId": "current-user",
+      "content": "Yes! It was incredible. Here's a photo from the stadium",
+      "attachment": {
+        "type": "image",
+        "name": "stadium.jpg",
+        "url": "https://images.unsplash.com/photo-1459865264687-595d652de67e?w=400&h=300&fit=crop",
+        "size": 245760
+      },
+      "createdAt": "2024-01-14T16:00:00Z",
+      "isRead": true
+    },
+    {
+      "id": "msg-7",
+      "conversationId": "conv-2",
+      "senderId": "user-3",
+      "content": "Thanks for sharing the photos!",
+      "attachment": null,
+      "createdAt": "2024-01-14T16:45:00Z",
+      "isRead": true
+    },
+    {
+      "id": "msg-8",
+      "conversationId": "conv-3",
+      "senderId": "user-4",
+      "content": "Hey! Are we still on for lunch tomorrow?",
+      "attachment": null,
+      "createdAt": "2024-01-13T18:00:00Z",
+      "isRead": true
+    },
+    {
+      "id": "msg-9",
+      "conversationId": "conv-3",
+      "senderId": "current-user",
+      "content": "Absolutely! Looking forward to it 😊",
+      "attachment": null,
+      "createdAt": "2024-01-13T18:30:00Z",
+      "isRead": true
+    },
+    {
+      "id": "msg-10",
+      "conversationId": "conv-3",
+      "senderId": "user-4",
+      "content": "Perfect! I found a great new place we should try.",
+      "attachment": null,
+      "createdAt": "2024-01-13T19:00:00Z",
+      "isRead": true
+    },
+    {
+      "id": "msg-11",
+      "conversationId": "conv-3",
+      "senderId": "current-user",
+      "content": "Sounds amazing! Send me the details when you get a chance.",
+      "attachment": null,
+      "createdAt": "2024-01-13T19:15:00Z",
+      "isRead": true
+    },
+    {
+      "id": "msg-12",
+      "conversationId": "conv-3",
+      "senderId": "user-4",
+      "content": "Can't wait to see you tomorrow! 🎉",
+      "attachment": null,
+      "createdAt": "2024-01-13T20:15:00Z",
+      "isRead": false
+    },
+    {
+      "id": "msg-13",
+      "conversationId": "conv-4",
+      "senderId": "user-5",
+      "content": "How did the client presentation go?",
+      "attachment": null,
+      "createdAt": "2024-01-12T16:00:00Z",
+      "isRead": true
+    },
+    {
+      "id": "msg-14",
+      "conversationId": "conv-4",
+      "senderId": "current-user",
+      "content": "It went really well! They loved our proposal.",
+      "attachment": null,
+      "createdAt": "2024-01-12T16:30:00Z",
+      "isRead": true
+    },
+    {
+      "id": "msg-15",
+      "conversationId": "conv-4",
+      "senderId": "user-5",
+      "content": "The meeting went well, I'll send you the notes later.",
+      "attachment": null,
+      "createdAt": "2024-01-12T17:20:00Z",
+      "isRead": true
+    }
+  ]
+}

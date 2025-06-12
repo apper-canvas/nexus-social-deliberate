@@ -40,9 +40,9 @@ function Layout() {
   }
 
   return (
-    <div className="h-screen flex overflow-hidden bg-background">
+<div className="h-screen flex overflow-hidden bg-background">
       {/* Left Sidebar */}
-<aside className="flex-shrink-0 w-56 bg-surface/95 backdrop-blur border-r border-gray-700 sticky top-0 h-full overflow-y-auto">
+      <aside className="flex-shrink-0 w-56 bg-surface/95 backdrop-blur border-r border-gray-700 sticky top-0 h-full">
         <div className="p-6">
           {/* Logo */}
 <div className="flex items-center space-x-3 mb-8">
@@ -96,26 +96,26 @@ function Layout() {
                 : location.pathname.startsWith(item.path)
               
               return (
-                <NavLink
+<NavLink
                   key={item.path}
                   to={item.path}
-                  className={`flex items-center space-x-3 px-4 py-3 rounded-xl transition-all group ${
-                    isActive 
-                      ? 'bg-gradient-to-r from-primary to-secondary text-white' 
-                      : 'text-gray-400 hover:text-white hover:bg-gray-800/50'
-                  }`}
+                  className="flex items-center space-x-3 px-4 py-3 transition-all group"
                 >
                   <motion.div
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
-<ApperIcon 
+                    <ApperIcon 
                       name={item.icon} 
                       size={18} 
                       className={isActive ? 'text-white' : 'text-gray-400 group-hover:text-white'}
                     />
                   </motion.div>
-                  <span className="font-medium text-sm">{item.label}</span>
+                  <span className={`font-medium text-sm transition-all ${
+                    isActive 
+                      ? 'text-transparent bg-gradient-to-r from-primary to-secondary bg-clip-text font-semibold' 
+                      : 'text-gray-400 group-hover:text-white'
+                  }`}>{item.label}</span>
                 </NavLink>
               )
             })}
@@ -150,26 +150,26 @@ function Layout() {
                 }
                 
                 return (
-                  <NavLink
+<NavLink
                     key={item.path}
                     to={item.path}
-                    className={`flex items-center space-x-3 px-4 py-3 rounded-xl transition-all group ${
-                      isActive 
-                        ? 'bg-gradient-to-r from-primary to-secondary text-white' 
-                        : 'text-gray-400 hover:text-white hover:bg-gray-800/50'
-                    }`}
+                    className="flex items-center space-x-3 px-4 py-3 transition-all group"
                   >
                     <motion.div
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                     >
-<ApperIcon 
+                      <ApperIcon 
                         name={item.icon} 
                         size={18} 
                         className={isActive ? 'text-white' : 'text-gray-400 group-hover:text-white'}
                       />
                     </motion.div>
-                    <span className="font-medium text-sm">{item.label}</span>
+                    <span className={`font-medium text-sm transition-all ${
+                      isActive 
+                        ? 'text-transparent bg-gradient-to-r from-primary to-secondary bg-clip-text font-semibold' 
+                        : 'text-gray-400 group-hover:text-white'
+                    }`}>{item.label}</span>
                   </NavLink>
                 )
               })}

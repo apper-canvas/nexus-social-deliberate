@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion'
+import React from 'react';
+import { motion } from 'framer-motion';
 
 function LoadingSkeleton({ count = 3 }) {
   return (
@@ -39,7 +40,7 @@ function LoadingSkeleton({ count = 3 }) {
         </motion.div>
       ))}
     </div>
-  )
+  );
 }
 
-export default LoadingSkeleton
+export default LoadingSkeleton;

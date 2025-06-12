@@ -1,68 +1,69 @@
-import { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
-import { toast } from 'react-toastify'
-import { useParams, useNavigate } from 'react-router-dom'
-import ProfileHeader from '../components/ProfileHeader'
-import PostGrid from '../components/PostGrid'
-import LoadingSkeleton from '../components/LoadingSkeleton'
-import ErrorState from '../components/ErrorState'
-import EmptyState from '../components/EmptyState'
-import userService from '../services/api/userService'
-import postService from '../services/api/postService'
-import ApperIcon from '../components/ApperIcon'
+import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { toast } from 'react-toastify';
+import { useParams, useNavigate } from 'react-router-dom';
+import ProfileHeader from '@/components/organisms/ProfileHeader';
+import PostGrid from '@/components/organisms/PostGrid';
+import LoadingSkeleton from '@/components/organisms/LoadingSkeleton';
+import ErrorState from '@/components/organisms/ErrorState';
+import EmptyState from '@/components/organisms/EmptyState';
+import ApperIcon from '@/components/ApperIcon';
+import Button from '@/components/atoms/Button';
+import userService from '@/services/api/userService'; // Keep API service imports here
+import postService from '@/services/api/postService';
 
-function Profile() {
-  const { userId } = useParams()
-  const navigate = useNavigate()
-  const [user, setUser] = useState(null)
-  const [posts, setPosts] = useState([])
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(null)
-  const [isCurrentUser, setIsCurrentUser] = useState(false)
+function ProfilePage() {
+  const { userId } = useParams();
+  const navigate = useNavigate();
+  const [user, setUser] = useState(null);
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [isCurrentUser, setIsCurrentUser] = useState(false);
 
   const loadData = async () => {
-    setLoading(true)
-    setError(null)
+    setLoading(true);
+    setError(null);
     try {
-      const currentUserId = 'current-user' // In real app, get from auth
-      const targetUserId = userId || currentUserId
-      setIsCurrentUser(targetUserId === currentUserId)
+      const currentUserId = 'current-user'; // In real app, get from auth
+      const targetUserId = userId || currentUserId;
+      setIsCurrentUser(targetUserId === currentUserId);
       
       const [userData, userPosts] = await Promise.all([
         userService.getById(targetUserId),
         postService.getByUser(targetUserId)
-      ])
+      ]);
       
-      setUser(userData)
-      setPosts(userPosts)
+      setUser(userData);
+      setPosts(userPosts);
     } catch (err) {
-      setError(err.message || 'Failed to load profile')
-      toast.error('Failed to load profile')
+      setError(err.message || 'Failed to load profile');
+      toast.error('Failed to load profile');
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   const handleFollow = async () => {
-    if (!user) return
+    if (!user) return;
     
     try {
-      const updatedUser = await userService.follow(user.id)
-      setUser(updatedUser)
-      toast.success(`${updatedUser.isFollowing ? 'Followed' : 'Unfollowed'} ${user.displayName}`)
+      const updatedUser = await userService.follow(user.id);
+      setUser(updatedUser);
+      toast.success(`${updatedUser.isFollowing ? 'Followed' : 'Unfollowed'} ${user.displayName}`);
     } catch (err) {
-      toast.error('Failed to update follow status')
+      toast.error('Failed to update follow status');
     }
-  }
+  };
 
   const handleEditProfile = () => {
     // Navigate to edit profile page
-    navigate('/profile/edit')
-  }
+    navigate('/profile/edit');
+  };
 
   useEffect(() => {
-    loadData()
-  }, [userId])
+    loadData();
+  }, [userId]);
 
   if (loading) {
     return (
@@ -90,7 +91,7 @@ function Profile() {
         
         <LoadingSkeleton count={6} />
       </div>
-    )
+    );
   }
 
   if (error) {
@@ -101,7 +102,7 @@ function Profile() {
           onRetry={loadData}
         />
       </div>
-    )
+    );
   }
 
   if (!user) {
@@ -114,7 +115,7 @@ function Profile() {
           onAction={() => navigate(-1)}
         />
       </div>
-    )
+    );
   }
 
   return (
@@ -158,17 +159,17 @@ function Profile() {
 
       {/* Floating Action Button (for current user) */}
       {isCurrentUser && (
-        <motion.button
+        <Button
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           onClick={() => navigate('/create')}
           className="fixed bottom-24 right-6 w-14 h-14 bg-gradient-to-r from-primary to-secondary rounded-full shadow-lg flex items-center justify-center z-30"
         >
           <ApperIcon name="Plus" size={24} className="text-white" />
-        </motion.button>
+        </Button>
       )}
     </motion.div>
-  )
+  );
 }
 
-export default Profile
+export default ProfilePage;

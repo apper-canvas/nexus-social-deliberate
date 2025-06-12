@@ -1,77 +1,76 @@
-import { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
-import { toast } from 'react-toastify'
-import StoryCarousel from '../components/StoryCarousel'
-import PostCard from '../components/PostCard'
-import LoadingSkeleton from '../components/LoadingSkeleton'
-import ErrorState from '../components/ErrorState'
-import EmptyState from '../components/EmptyState'
-import postService from '../services/api/postService'
-import storyService from '../services/api/storyService'
+import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { toast } from 'react-toastify';
+import Feed from '@/components/organisms/Feed';
+import LoadingSkeleton from '@/components/organisms/LoadingSkeleton';
+import ErrorState from '@/components/organisms/ErrorState';
+import EmptyState from '@/components/organisms/EmptyState';
+import postService from '@/services/api/postService'; // Keep API service imports here
+import storyService from '@/services/api/storyService';
 
-function Home() {
-  const [posts, setPosts] = useState([])
-  const [stories, setStories] = useState([])
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(null)
-  const [refreshing, setRefreshing] = useState(false)
+function HomePage() {
+  const [posts, setPosts] = useState([]);
+  const [stories, setStories] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [refreshing, setRefreshing] = useState(false);
 
   const loadData = async () => {
-    setLoading(true)
-    setError(null)
+    setLoading(true);
+    setError(null);
     try {
       const [postsData, storiesData] = await Promise.all([
         postService.getAll(),
         storyService.getAll()
-      ])
-      setPosts(postsData)
-      setStories(storiesData)
+      ]);
+      setPosts(postsData);
+      setStories(storiesData);
     } catch (err) {
-      setError(err.message || 'Failed to load feed')
-      toast.error('Failed to load feed')
+      setError(err.message || 'Failed to load feed');
+      toast.error('Failed to load feed');
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   const handleRefresh = async () => {
-    setRefreshing(true)
+    setRefreshing(true);
     try {
-      await loadData()
-      toast.success('Feed refreshed!')
+      await loadData();
+      toast.success('Feed refreshed!');
     } catch (err) {
-      toast.error('Failed to refresh feed')
+      toast.error('Failed to refresh feed');
     } finally {
-      setRefreshing(false)
+      setRefreshing(false);
     }
-  }
+  };
 
   const handleLike = async (postId) => {
     try {
-      const updatedPost = await postService.likePost(postId)
+      const updatedPost = await postService.likePost(postId);
       setPosts(prev => prev.map(post => 
         post.id === postId ? updatedPost : post
-      ))
+      ));
     } catch (err) {
-      toast.error('Failed to like post')
+      toast.error('Failed to like post');
     }
-  }
+  };
 
   const handleComment = async (postId, text) => {
     try {
-      const updatedPost = await postService.addComment(postId, text)
+      const updatedPost = await postService.addComment(postId, text);
       setPosts(prev => prev.map(post => 
         post.id === postId ? updatedPost : post
-      ))
-      toast.success('Comment added!')
+      ));
+      toast.success('Comment added!');
     } catch (err) {
-      toast.error('Failed to add comment')
+      toast.error('Failed to add comment');
     }
-  }
+  };
 
   useEffect(() => {
-    loadData()
-  }, [])
+    loadData();
+  }, []);
 
   if (loading && posts.length === 0) {
     return (
@@ -88,7 +87,7 @@ function Home() {
         </div>
         <LoadingSkeleton count={3} />
       </div>
-    )
+    );
   }
 
   if (error && posts.length === 0) {
@@ -99,7 +98,7 @@ function Home() {
           onRetry={loadData}
         />
       </div>
-    )
+    );
   }
 
   if (posts.length === 0 && !loading) {
@@ -109,10 +108,10 @@ function Home() {
           title="No posts yet"
           description="Follow some users to see their posts in your feed"
           actionLabel="Explore Users"
-          onAction={() => {}}
+          onAction={() => { /* In a real app, navigate to explore page */ }}
         />
       </div>
-    )
+    );
   }
 
   return (
@@ -128,28 +127,12 @@ function Home() {
         </div>
       )}
 
-      {/* Stories */}
-      <div className="border-b border-gray-800">
-        <StoryCarousel stories={stories} />
-      </div>
-
-      {/* Posts Feed */}
-      <div className="space-y-0">
-        {posts.map((post, index) => (
-          <motion.div
-            key={post.id}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.1 }}
-          >
-            <PostCard 
-              post={post}
-              onLike={handleLike}
-              onComment={handleComment}
-            />
-          </motion.div>
-        ))}
-      </div>
+      <Feed 
+        posts={posts} 
+        stories={stories} 
+        onLike={handleLike} 
+        onComment={handleComment} 
+      />
 
       {/* Load more trigger */}
       <div className="p-4 text-center">
@@ -162,7 +145,7 @@ function Home() {
         </button>
       </div>
     </motion.div>
-  )
+  );
 }
 
-export default Home
+export default HomePage;

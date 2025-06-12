@@ -1,35 +1,37 @@
-import { useState } from 'react'
-import { motion } from 'framer-motion'
-import { formatDistanceToNow } from 'date-fns'
-import ApperIcon from './ApperIcon'
-import CommentModal from './CommentModal'
+import { useState } from 'react';
+import { motion } from 'framer-motion';
+import { formatDistanceToNow } from 'date-fns';
+import ApperIcon from '@/components/ApperIcon';
+import CommentModal from '@/components/organisms/CommentModal';
+import Button from '@/components/atoms/Button';
 
 function PostCard({ post, onLike, onComment }) {
-  const [isLiked, setIsLiked] = useState(false)
-  const [showComments, setShowComments] = useState(false)
-  const [isLiking, setIsLiking] = useState(false)
+  const [isLiked, setIsLiked] = useState(false);
+  const [showComments, setShowComments] = useState(false);
+  const [isLiking, setIsLiking] = useState(false);
 
   const handleLike = async () => {
-    if (isLiking) return
+    if (isLiking) return;
     
-    setIsLiking(true)
-    setIsLiked(!isLiked)
+    setIsLiking(true);
+    setIsLiked(prev => !prev); // Optimistic UI update
     
     try {
-      await onLike(post.id)
+      await onLike(post.id);
     } catch (err) {
       // Revert on error
-      setIsLiked(isLiked)
+      setIsLiked(prev => !prev);
     } finally {
-      setIsLiking(false)
+      setIsLiking(false);
     }
-  }
+  };
 
-  const handleComment = async (text) => {
-    await onComment(post.id, text)
-  }
+  // onComment is passed down directly from the parent, so this wrapper simplifies its call
+  const handleCommentSubmit = async (commentText) => {
+    await onComment(post.id, commentText);
+  };
 
-  const timeAgo = formatDistanceToNow(new Date(post.createdAt), { addSuffix: true })
+  const timeAgo = formatDistanceToNow(new Date(post.createdAt), { addSuffix: true });
 
   return (
     <>
@@ -52,9 +54,9 @@ function PostCard({ post, onLike, onComment }) {
             </div>
           </div>
           
-          <button className="p-1 hover:bg-surface rounded-full transition-colors">
+          <Button className="p-1 hover:bg-surface rounded-full transition-colors">
             <ApperIcon name="MoreVertical" size={16} className="text-gray-400" />
-          </button>
+          </Button>
         </div>
 
         {/* Image */}
@@ -66,7 +68,7 @@ function PostCard({ post, onLike, onComment }) {
             loading="lazy"
           />
           
-          {/* Double-tap to like overlay */}
+          {/* Double-tap to like overlay (original logic, just moved) */}
           <motion.div
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 0, scale: 1 }}
@@ -88,12 +90,12 @@ function PostCard({ post, onLike, onComment }) {
         <div className="p-4 space-y-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
-              <motion.button
+              <Button
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={handleLike}
                 disabled={isLiking}
-                className="flex items-center space-x-1 group"
+                className="flex items-center space-x-1 group p-0"
               >
                 <motion.div
                   animate={isLiked ? { scale: [1, 1.3, 1] } : {}}
@@ -109,33 +111,33 @@ function PostCard({ post, onLike, onComment }) {
                     }`}
                   />
                 </motion.div>
-              </motion.button>
+              </Button>
               
-              <motion.button
+              <Button
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={() => setShowComments(true)}
-                className="text-gray-300 hover:text-gray-100 transition-colors"
+                className="text-gray-300 hover:text-gray-100 transition-colors p-0"
               >
                 <ApperIcon name="MessageCircle" size={24} />
-              </motion.button>
+              </Button>
               
-              <motion.button
+              <Button
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
-                className="text-gray-300 hover:text-gray-100 transition-colors"
+                className="text-gray-300 hover:text-gray-100 transition-colors p-0"
               >
                 <ApperIcon name="Send" size={24} />
-              </motion.button>
+              </Button>
             </div>
             
-            <motion.button
+            <Button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              className="text-gray-300 hover:text-gray-100 transition-colors"
+              className="text-gray-300 hover:text-gray-100 transition-colors p-0"
             >
               <ApperIcon name="Bookmark" size={24} />
-            </motion.button>
+            </Button>
           </div>
 
           {/* Likes count */}
@@ -153,12 +155,12 @@ function PostCard({ post, onLike, onComment }) {
 
           {/* Comments preview */}
           {post.comments && post.comments.length > 0 && (
-            <button
+            <Button
               onClick={() => setShowComments(true)}
-              className="text-gray-400 text-sm hover:text-gray-300 transition-colors"
+              className="text-gray-400 text-sm hover:text-gray-300 transition-colors p-0"
             >
               View all {post.comments.length} comments
-            </button>
+            </Button>
           )}
 
           {/* Timestamp */}
@@ -173,10 +175,10 @@ function PostCard({ post, onLike, onComment }) {
         isOpen={showComments}
         onClose={() => setShowComments(false)}
         post={post}
-        onComment={handleComment}
+        onComment={handleCommentSubmit} // Pass the local handler
       />
     </>
-  )
+  );
 }
 
-export default PostCard
+export default PostCard;

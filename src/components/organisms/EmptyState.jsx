@@ -1,5 +1,7 @@
-import { motion } from 'framer-motion'
-import ApperIcon from './ApperIcon'
+import React from 'react';
+import { motion } from 'framer-motion';
+import ApperIcon from '@/components/ApperIcon';
+import Button from '@/components/atoms/Button';
 
 function EmptyState({ title, description, actionLabel, onAction, icon = "Image" }) {
   return (
@@ -28,17 +30,17 @@ function EmptyState({ title, description, actionLabel, onAction, icon = "Image" 
       </div>
 
       {actionLabel && onAction && (
-        <motion.button
+        <Button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={onAction}
           className="px-6 py-2 bg-gradient-to-r from-primary to-secondary text-white font-medium rounded-lg"
         >
           {actionLabel}
-        </motion.button>
+        </Button>
       )}
     </motion.div>
-  )
+  );
 }
 
-export default EmptyState
+export default EmptyState;

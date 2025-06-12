@@ -1,8 +1,9 @@
-import { motion } from 'framer-motion'
-import PostCard from './PostCard'
-import StoryCarousel from './StoryCarousel'
+import React from 'react';
+import { motion } from 'framer-motion';
+import PostCard from '@/components/organisms/PostCard';
+import StoryCarousel from '@/components/organisms/StoryCarousel';
 
-function MainFeature({ posts, stories, onLike, onComment }) {
+function Feed({ posts, stories, onLike, onComment }) {
   return (
     <motion.div 
       initial={{ opacity: 0 }}
@@ -34,7 +35,7 @@ function MainFeature({ posts, stories, onLike, onComment }) {
         ))}
       </div>
     </motion.div>
-  )
+  );
 }
 
-export default MainFeature
+export default Feed;

@@ -1,12 +1,12 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 import { AnimatePresence } from 'framer-motion'
-import Layout from './Layout'
-import Home from './pages/Home'
-import Explore from './pages/Explore'
-import Profile from './pages/Profile'
-import CreatePost from './pages/CreatePost'
-import NotFound from './pages/NotFound'
+import Layout from './Layout';
+import HomePage from '@/components/pages/HomePage';
+import ExplorePage from '@/components/pages/ExplorePage';
+import ProfilePage from '@/components/pages/ProfilePage';
+import CreatePostPage from '@/components/pages/CreatePostPage';
+import NotFoundPage from '@/components/pages/NotFoundPage';
 
 function App() {
   return (
@@ -14,12 +14,12 @@ function App() {
       <div className="min-h-screen bg-background text-white">
         <AnimatePresence mode="wait">
           <Routes>
-            <Route path="/" element={<Layout />}>
-              <Route index element={<Home />} />
-              <Route path="/explore" element={<Explore />} />
-              <Route path="/create" element={<CreatePost />} />
-              <Route path="/profile/:userId?" element={<Profile />} />
-              <Route path="*" element={<NotFound />} />
+<Route path="/" element={<Layout />}>
+              <Route index element={<HomePage />} />
+              <Route path="/explore" element={<ExplorePage />} />
+<Route path="/create" element={<CreatePostPage />} />
+              <Route path="/profile/:userId?" element={<ProfilePage />} />
+              <Route path="*" element={<NotFoundPage />} />
             </Route>
           </Routes>
         </AnimatePresence>

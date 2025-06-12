@@ -1,5 +1,7 @@
-import { motion } from 'framer-motion'
-import ApperIcon from './ApperIcon'
+import React from 'react';
+import { motion } from 'framer-motion';
+import ApperIcon from '@/components/ApperIcon';
+import Button from '@/components/atoms/Button';
 
 function ErrorState({ message, onRetry }) {
   return (
@@ -29,17 +31,17 @@ function ErrorState({ message, onRetry }) {
       </div>
 
       {onRetry && (
-        <motion.button
+        <Button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={onRetry}
           className="px-6 py-2 bg-gradient-to-r from-primary to-secondary text-white font-medium rounded-lg"
         >
           Try Again
-        </motion.button>
+        </Button>
       )}
     </motion.div>
-  )
+  );
 }
 
-export default ErrorState
+export default ErrorState;

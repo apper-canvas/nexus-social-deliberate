@@ -7,7 +7,7 @@ import ExplorePage from '@/components/pages/ExplorePage';
 import ProfilePage from '@/components/pages/ProfilePage';
 import CreatePostPage from '@/components/pages/CreatePostPage';
 import MessagesPage from '@/components/pages/MessagesPage';
-
+import NotFoundPage from '@/components/pages/NotFoundPage';
 function App() {
   return (
     <BrowserRouter>

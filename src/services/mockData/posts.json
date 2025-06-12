@@ -1,0 +1,103 @@
+[
+  {
+    "id": "1",
+    "userId": "user1",
+    "imageUrl": "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?w=500&h=500&fit=crop",
+    "caption": "Beautiful sunset from my travels! The colors were absolutely incredible tonight. Nature never fails to amaze me ✨",
+    "likes": 324,
+    "comments": [
+      {
+        "id": "c1",
+        "postId": "1",
+        "userId": "user2",
+        "text": "Absolutely stunning! Where was this taken?",
+        "likes": 12,
+        "createdAt": "2024-01-15T14:30:00Z",
+        "user": {
+          "id": "user2",
+          "username": "sarah_photo",
+          "avatar": "https://images.unsplash.com/photo-1494790108755-2616b2a8d9e9?w=150&h=150&fit=crop&crop=face"
+        }
+      }
+    ],
+    "createdAt": "2024-01-15T12:00:00Z"
+  },
+  {
+    "id": "2",
+    "userId": "user2",
+    "imageUrl": "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e?w=500&h=500&fit=crop",
+    "caption": "Coffee art level: expert ☕ Starting the day right with some serious caffeine creativity!",
+    "likes": 156,
+    "comments": [
+      {
+        "id": "c2",
+        "postId": "2",
+        "userId": "user3",
+        "text": "That latte art is incredible! Teach me your ways 🙏",
+        "likes": 8,
+        "createdAt": "2024-01-15T13:15:00Z",
+        "user": {
+          "id": "user3",
+          "username": "mike_design",
+          "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face"
+        }
+      }
+    ],
+    "createdAt": "2024-01-15T11:30:00Z"
+  },
+  {
+    "id": "3",
+    "userId": "user3",
+    "imageUrl": "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?w=500&h=500&fit=crop",
+    "caption": "New furry friend at the shelter! This little guy is looking for his forever home 🐱 #AdoptDontShop",
+    "likes": 892,
+    "comments": [
+      {
+        "id": "c3",
+        "postId": "3",
+        "userId": "user1",
+        "text": "Oh my heart! Those eyes are so precious 😻",
+        "likes": 45,
+        "createdAt": "2024-01-15T14:00:00Z",
+        "user": {
+          "id": "user1",
+          "username": "alex_explores",
+          "avatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face"
+        }
+      }
+    ],
+    "createdAt": "2024-01-15T10:45:00Z"
+  },
+  {
+    "id": "4",
+    "userId": "user4",
+    "imageUrl": "https://images.unsplash.com/photo-1540553016722-983e48a2cd10?w=500&h=500&fit=crop",
+    "caption": "Fresh pasta making session! Nothing beats homemade noodles. The secret is all in the kneading technique 🍝",
+    "likes": 267,
+    "comments": [],
+    "createdAt": "2024-01-15T09:20:00Z"
+  },
+  {
+    "id": "5",
+    "userId": "user5",
+    "imageUrl": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=500&h=500&fit=crop",
+    "caption": "Mountain hiking adventure complete! The view from the top was worth every step. Nature therapy at its finest 🏔️",
+    "likes": 445,
+    "comments": [
+      {
+        "id": "c4",
+        "postId": "5",
+        "userId": "user2",
+        "text": "Which trail is this? Adding it to my hiking bucket list!",
+        "likes": 18,
+        "createdAt": "2024-01-15T13:45:00Z",
+        "user": {
+          "id": "user2",
+          "username": "sarah_photo",
+          "avatar": "https://images.unsplash.com/photo-1494790108755-2616b2a8d9e9?w=150&h=150&fit=crop&crop=face"
+        }
+      }
+    ],
+    "createdAt": "2024-01-15T08:15:00Z"
+  }
+]

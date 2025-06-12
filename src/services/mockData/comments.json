@@ -1,0 +1,42 @@
+[
+  {
+    "id": "c1",
+    "postId": "1",
+    "userId": "user2",
+    "text": "Absolutely stunning! Where was this taken?",
+    "likes": 12,
+    "createdAt": "2024-01-15T14:30:00Z"
+  },
+  {
+    "id": "c2",
+    "postId": "2",
+    "userId": "user3",
+    "text": "That latte art is incredible! Teach me your ways 🙏",
+    "likes": 8,
+    "createdAt": "2024-01-15T13:15:00Z"
+  },
+  {
+    "id": "c3",
+    "postId": "3",
+    "userId": "user1",
+    "text": "Oh my heart! Those eyes are so precious 😻",
+    "likes": 45,
+    "createdAt": "2024-01-15T14:00:00Z"
+  },
+  {
+    "id": "c4",
+    "postId": "5",
+    "userId": "user2",
+    "text": "Which trail is this? Adding it to my hiking bucket list!",
+    "likes": 18,
+    "createdAt": "2024-01-15T13:45:00Z"
+  },
+  {
+    "id": "c5",
+    "postId": "1",
+    "userId": "user3",
+    "text": "The way the light hits the clouds is perfect! Great shot 📸",
+    "likes": 7,
+    "createdAt": "2024-01-15T15:00:00Z"
+  }
+]

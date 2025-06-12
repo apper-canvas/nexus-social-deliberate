@@ -1,0 +1,79 @@
+[
+  {
+    "id": "current-user",
+    "username": "you",
+    "displayName": "You",
+    "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150&h=150&fit=crop&crop=face",
+    "bio": "Living life one photo at a time 📸",
+    "followers": ["user1", "user2", "user3"],
+    "following": ["user1", "user2", "user4", "user5"],
+    "isOnline": true,
+    "posts": []
+  },
+  {
+    "id": "user1",
+    "username": "alex_explores",
+    "displayName": "Alex Rodriguez",
+    "avatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
+    "bio": "Travel enthusiast | Photographer | Always seeking new adventures 🌍",
+    "followers": ["current-user", "user2", "user3", "user4"],
+    "following": ["user2", "user3", "user5"],
+    "isOnline": true,
+    "posts": ["1"]
+  },
+  {
+    "id": "user2",
+    "username": "sarah_photo",
+    "displayName": "Sarah Chen",
+    "avatar": "https://images.unsplash.com/photo-1494790108755-2616b2a8d9e9?w=150&h=150&fit=crop&crop=face",
+    "bio": "Professional photographer | Coffee lover ☕ | Capturing life's beautiful moments",
+    "followers": ["current-user", "user1", "user3", "user4", "user5"],
+    "following": ["user1", "user4"],
+    "isOnline": false,
+    "posts": ["2"]
+  },
+  {
+    "id": "user3",
+    "username": "mike_design",
+    "displayName": "Mike Johnson",
+    "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
+    "bio": "UI/UX Designer | Animal lover 🐾 | Making the world more beautiful",
+    "followers": ["current-user", "user1", "user2"],
+    "following": ["user1", "user2", "user4", "user5"],
+    "isOnline": true,
+    "posts": ["3"]
+  },
+  {
+    "id": "user4",
+    "username": "chef_emma",
+    "displayName": "Emma Williams",
+    "avatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
+    "bio": "Chef | Food artist | Sharing culinary adventures 👩‍🍳",
+    "followers": ["user1", "user2", "user3"],
+    "following": ["user1", "user2", "user5"],
+    "isOnline": false,
+    "posts": ["4"]
+  },
+  {
+    "id": "user5",
+    "username": "nature_jake",
+    "displayName": "Jake Thompson",
+    "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face",
+    "bio": "Outdoor enthusiast | Hiker | National park explorer 🏕️",
+    "followers": ["user2", "user3"],
+    "following": ["user1", "user3", "user4"],
+    "isOnline": true,
+    "posts": ["5"]
+  },
+  {
+    "id": "user6",
+    "username": "art_mia",
+    "displayName": "Mia Garcia",
+    "avatar": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face",
+    "bio": "Digital artist | Creative soul | Bringing imagination to life 🎨",
+    "followers": ["user1", "user3"],
+    "following": ["user2", "user4"],
+    "isOnline": false,
+    "posts": []
+  }
+]

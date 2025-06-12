@@ -1,0 +1,42 @@
+[
+  {
+    "id": "s1",
+    "userId": "user1",
+    "imageUrl": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=300&h=500&fit=crop",
+    "viewers": ["current-user", "user2"],
+    "createdAt": "2024-01-15T10:00:00Z",
+    "expiresAt": "2024-01-16T10:00:00Z"
+  },
+  {
+    "id": "s2",
+    "userId": "user2",
+    "imageUrl": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=300&h=500&fit=crop",
+    "viewers": ["current-user"],
+    "createdAt": "2024-01-15T11:30:00Z",
+    "expiresAt": "2024-01-16T11:30:00Z"
+  },
+  {
+    "id": "s3",
+    "userId": "user3",
+    "imageUrl": "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=300&h=500&fit=crop",
+    "viewers": [],
+    "createdAt": "2024-01-15T13:15:00Z",
+    "expiresAt": "2024-01-16T13:15:00Z"
+  },
+  {
+    "id": "s4",
+    "userId": "user4",
+    "imageUrl": "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=300&h=500&fit=crop",
+    "viewers": ["current-user", "user1", "user2"],
+    "createdAt": "2024-01-15T14:45:00Z",
+    "expiresAt": "2024-01-16T14:45:00Z"
+  },
+  {
+    "id": "s5",
+    "userId": "user5",
+    "imageUrl": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=300&h=500&fit=crop",
+    "viewers": ["current-user"],
+    "createdAt": "2024-01-15T09:20:00Z",
+    "expiresAt": "2024-01-16T09:20:00Z"
+  }
+]

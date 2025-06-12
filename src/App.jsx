@@ -7,17 +7,19 @@ import ExplorePage from '@/components/pages/ExplorePage';
 import ProfilePage from '@/components/pages/ProfilePage';
 import CreatePostPage from '@/components/pages/CreatePostPage';
 import MessagesPage from '@/components/pages/MessagesPage';
+import NotificationsPage from '@/components/pages/NotificationsPage';
 import NotFoundPage from '@/components/pages/NotFoundPage';
 function App() {
   return (
     <BrowserRouter>
       <div className="min-h-screen bg-background text-white">
         <AnimatePresence mode="wait">
-          <Routes>
-<Route path="/" element={<Layout />}>
+<Routes>
+            <Route path="/" element={<Layout />}>
               <Route index element={<HomePage />} />
               <Route path="/explore" element={<ExplorePage />} />
-<Route path="/create" element={<CreatePostPage />} />
+              <Route path="/notifications" element={<NotificationsPage />} />
+              <Route path="/create" element={<CreatePostPage />} />
               <Route path="/messages" element={<MessagesPage />} />
               <Route path="/profile/:userId?" element={<ProfilePage />} />
               <Route path="*" element={<NotFoundPage />} />

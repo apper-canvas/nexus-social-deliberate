@@ -2,12 +2,10 @@ import { delay } from '../index'
 import postsData from '../mockData/posts.json'
 import usersData from '../mockData/users.json'
 
-// Simulate in-memory storage
 let posts = [...postsData].map(post => ({
   ...post,
   user: usersData.find(user => user.id === post.userId)
 }))
-
 const postService = {
   async getAll() {
     await delay(300)
@@ -89,9 +87,9 @@ const postService = {
     }
     post.likes = (post.likes || 0) + 1
     return { ...post }
-  },
+},
 
-async addComment(id, text) {
+  async addComment(id, text) {
     await delay(300)
     const post = posts.find(p => p.id === id)
     if (!post) {

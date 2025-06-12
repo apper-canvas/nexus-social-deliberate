@@ -2,12 +2,10 @@ import { delay } from '../index'
 import storiesData from '../mockData/stories.json'
 import usersData from '../mockData/users.json'
 
-// Simulate in-memory storage
 let stories = [...storiesData].map(story => ({
   ...story,
   user: usersData.find(user => user.id === story.userId)
 }))
-
 const storyService = {
   async getAll() {
     await delay(250)

@@ -45,8 +45,8 @@ function Layout() {
 <aside className="flex-shrink-0 w-56 bg-surface/95 backdrop-blur border-r border-gray-700 sticky top-0 h-full overflow-y-auto">
         <div className="p-6">
           {/* Logo */}
-          <div className="flex items-center space-x-3 mb-8">
-            <div className="w-12 h-12 rounded-xl gradient-bg flex items-center justify-center">
+<div className="flex items-center space-x-3 mb-8">
+            <div className="w-10 h-10 rounded-xl gradient-bg flex items-center justify-center">
               <span className="text-white font-bold text-lg">N</span>
             </div>
             <h1 className="text-2xl font-heading font-bold gradient-text">Nexus</h1>
@@ -109,13 +109,13 @@ function Layout() {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <ApperIcon 
+<ApperIcon 
                       name={item.icon} 
-                      size={20} 
+                      size={18} 
                       className={isActive ? 'text-white' : 'text-gray-400 group-hover:text-white'}
                     />
                   </motion.div>
-                  <span className="font-semibold">{item.label}</span>
+                  <span className="font-medium text-sm">{item.label}</span>
                 </NavLink>
               )
             })}
@@ -138,13 +138,13 @@ function Layout() {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                       >
-                        <ApperIcon 
+<ApperIcon 
                           name={item.icon} 
-                          size={20} 
+                          size={18} 
                           className="text-gray-400 group-hover:text-white"
                         />
                       </motion.div>
-                      <span className="font-semibold">{item.label}</span>
+                      <span className="font-medium text-sm">{item.label}</span>
                     </button>
                   )
                 }
@@ -163,13 +163,13 @@ function Layout() {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                     >
-                      <ApperIcon 
+<ApperIcon 
                         name={item.icon} 
-                        size={20} 
+                        size={18} 
                         className={isActive ? 'text-white' : 'text-gray-400 group-hover:text-white'}
                       />
                     </motion.div>
-                    <span className="font-semibold">{item.label}</span>
+                    <span className="font-medium text-sm">{item.label}</span>
                   </NavLink>
                 )
               })}

@@ -43,7 +43,7 @@ function Layout() {
 <div className="h-screen flex overflow-hidden bg-background">
       {/* Left Sidebar */}
 <aside className="flex-shrink-0 w-56 bg-surface/95 backdrop-blur border-r border-gray-700 sticky top-0 h-full">
-        <div className="p-6 h-full flex flex-col">
+<div className="p-6 h-full flex flex-col overflow-y-auto scrollbar-hide">
           {/* Logo */}
           <div className="flex items-center space-x-3 mb-8">
             <div className="w-10 h-10 rounded-xl gradient-bg flex items-center justify-center">
@@ -89,7 +89,7 @@ function Layout() {
           )}
 
           {/* Scrollable Navigation Container */}
-          <div className="flex-1 overflow-y-auto scrollbar-hide">
+<div className="flex-1">
             {/* Main Navigation */}
             <nav className="space-y-2 mb-8">
               {mainNavItems.map((item) => {

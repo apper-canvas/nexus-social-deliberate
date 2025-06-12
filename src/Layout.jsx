@@ -42,11 +42,11 @@ function Layout() {
   return (
     <div className="h-screen flex overflow-hidden bg-background">
       {/* Left Sidebar */}
-      <aside className="flex-shrink-0 w-64 bg-surface/95 backdrop-blur border-r border-gray-700 sticky top-0 h-full overflow-y-auto">
+<aside className="flex-shrink-0 w-56 bg-surface/95 backdrop-blur border-r border-gray-700 sticky top-0 h-full overflow-y-auto">
         <div className="p-6">
           {/* Logo */}
           <div className="flex items-center space-x-3 mb-8">
-            <div className="w-10 h-10 rounded-xl gradient-bg flex items-center justify-center">
+            <div className="w-12 h-12 rounded-xl gradient-bg flex items-center justify-center">
               <span className="text-white font-bold text-lg">N</span>
             </div>
             <h1 className="text-2xl font-heading font-bold gradient-text">Nexus</h1>
@@ -88,7 +88,7 @@ function Layout() {
             </div>
           )}
 
-          {/* Main Navigation */}
+{/* Main Navigation */}
           <nav className="space-y-2 mb-8">
             {mainNavItems.map((item) => {
               const isActive = item.path === '/' 
@@ -115,7 +115,7 @@ function Layout() {
                       className={isActive ? 'text-white' : 'text-gray-400 group-hover:text-white'}
                     />
                   </motion.div>
-                  <span className="font-medium">{item.label}</span>
+                  <span className="font-semibold">{item.label}</span>
                 </NavLink>
               )
             })}
@@ -144,7 +144,7 @@ function Layout() {
                           className="text-gray-400 group-hover:text-white"
                         />
                       </motion.div>
-                      <span className="font-medium">{item.label}</span>
+                      <span className="font-semibold">{item.label}</span>
                     </button>
                   )
                 }
@@ -169,7 +169,7 @@ function Layout() {
                         className={isActive ? 'text-white' : 'text-gray-400 group-hover:text-white'}
                       />
                     </motion.div>
-                    <span className="font-medium">{item.label}</span>
+                    <span className="font-semibold">{item.label}</span>
                   </NavLink>
                 )
               })}

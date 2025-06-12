@@ -24,9 +24,9 @@ export default {
           '2xl': '6rem',
         },
       },
-      colors: {
-        primary: '#7C3AED',
-        secondary: '#EC4899',
+colors: {
+        primary: '#FB923C',
+        secondary: '#EF4444',
         accent: '#F59E0B',
         surface: '#1F2937',
         background: '#111827',

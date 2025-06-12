@@ -6,6 +6,24 @@ export default {
   ],
   theme: {
     extend: {
+      screens: {
+        'xs': '475px',
+        'sm': '640px',
+        'md': '768px',
+        'lg': '1024px',
+        'xl': '1280px',
+        '2xl': '1536px',
+      },
+      container: {
+        center: true,
+        padding: {
+          DEFAULT: '1rem',
+          sm: '2rem',
+          lg: '4rem',
+          xl: '5rem',
+          '2xl': '6rem',
+        },
+      },
       colors: {
         primary: '#7C3AED',
         secondary: '#EC4899',
@@ -20,6 +38,11 @@ export default {
       fontFamily: {
         sans: ['Inter', 'ui-sans-serif', 'system-ui'],
         heading: ['Plus Jakarta Sans', 'ui-sans-serif', 'system-ui']
+      },
+      spacing: {
+        '18': '4.5rem',
+        '88': '22rem',
+        '128': '32rem',
       },
       animation: {
         'bounce-heart': 'bounce-heart 0.6s ease-out',

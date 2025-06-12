@@ -12,8 +12,8 @@ function PostGrid({ posts = [], onPostClick }) {
     }
   };
 
-  return (
-    <div className="grid grid-cols-3 gap-1">
+return (
+    <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-1 sm:gap-2 md:gap-3">
       {posts.map((post, index) => (
         <PostThumbnail 
           key={post.id}

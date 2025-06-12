@@ -4,18 +4,20 @@ import { formatDistanceToNow } from 'date-fns';
 import ApperIcon from '@/components/ApperIcon';
 import CommentModal from '@/components/organisms/CommentModal';
 import Button from '@/components/atoms/Button';
+import postService from '@/services/api/postService';
 
 function PostCard({ post, onLike, onComment }) {
   const [isLiked, setIsLiked] = useState(false);
+  const [isSaved, setIsSaved] = useState(false);
   const [showComments, setShowComments] = useState(false);
   const [isLiking, setIsLiking] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
 
   const handleLike = async () => {
     if (isLiking) return;
     
     setIsLiking(true);
     setIsLiked(prev => !prev); // Optimistic UI update
-    
     try {
       await onLike(post.id);
     } catch (err) {
@@ -26,13 +28,33 @@ function PostCard({ post, onLike, onComment }) {
     }
   };
 
-  // onComment is passed down directly from the parent, so this wrapper simplifies its call
+// onComment is passed down directly from the parent, so this wrapper simplifies its call
   const handleCommentSubmit = async (commentText) => {
     await onComment(post.id, commentText);
   };
 
-  const timeAgo = formatDistanceToNow(new Date(post.createdAt), { addSuffix: true });
+  const handleSave = async () => {
+    if (isSaving) return;
+    
+    setIsSaving(true);
+    setIsSaved(prev => !prev); // Optimistic UI update
+    
+    try {
+      if (isSaved) {
+        await postService.unsavePost(post.id);
+      } else {
+        await postService.savePost(post.id);
+      }
+    } catch (error) {
+      // Revert optimistic update on error
+      setIsSaved(prev => !prev);
+      console.error('Error saving post:', error);
+    } finally {
+      setIsSaving(false);
+    }
+  };
 
+  const timeAgo = formatDistanceToNow(new Date(post.createdAt), { addSuffix: true });
   return (
     <>
       <motion.div 
@@ -131,10 +153,14 @@ function PostCard({ post, onLike, onComment }) {
               </Button>
             </div>
             
-            <Button
+<Button
+              onClick={handleSave}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              className="text-gray-300 hover:text-gray-100 transition-colors p-0"
+              className={`transition-colors p-0 ${
+                isSaved ? 'text-yellow-400 hover:text-yellow-300' : 'text-gray-300 hover:text-gray-100'
+              }`}
+              disabled={isSaving}
             >
               <ApperIcon name="Bookmark" size={24} />
             </Button>

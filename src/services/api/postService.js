@@ -91,7 +91,7 @@ const postService = {
     return { ...post }
   },
 
-  async addComment(id, text) {
+async addComment(id, text) {
     await delay(300)
     const post = posts.find(p => p.id === id)
     if (!post) {
@@ -110,6 +110,41 @@ const postService = {
     
     post.comments = post.comments || []
     post.comments.push(newComment)
+    return { ...post }
+  },
+
+  async savePost(id) {
+    await delay(300)
+    const post = posts.find(p => p.id === id)
+    if (!post) {
+      throw new Error('Post not found')
+    }
+    
+    // Find current user and add post to their saved posts
+    const currentUser = usersData.find(user => user.id === 'current-user')
+    if (currentUser) {
+      currentUser.savedPosts = currentUser.savedPosts || []
+      if (!currentUser.savedPosts.includes(id)) {
+        currentUser.savedPosts.push(id)
+      }
+    }
+    
+    return { ...post }
+  },
+
+  async unsavePost(id) {
+    await delay(300)
+    const post = posts.find(p => p.id === id)
+    if (!post) {
+      throw new Error('Post not found')
+    }
+    
+    // Find current user and remove post from their saved posts
+    const currentUser = usersData.find(user => user.id === 'current-user')
+    if (currentUser && currentUser.savedPosts) {
+      currentUser.savedPosts = currentUser.savedPosts.filter(postId => postId !== id)
+    }
+    
     return { ...post }
   }
 }

@@ -6,7 +6,7 @@ import HomePage from '@/components/pages/HomePage';
 import ExplorePage from '@/components/pages/ExplorePage';
 import ProfilePage from '@/components/pages/ProfilePage';
 import CreatePostPage from '@/components/pages/CreatePostPage';
-import NotFoundPage from '@/components/pages/NotFoundPage';
+import MessagesPage from '@/components/pages/MessagesPage';
 
 function App() {
   return (
@@ -18,6 +18,7 @@ function App() {
               <Route index element={<HomePage />} />
               <Route path="/explore" element={<ExplorePage />} />
 <Route path="/create" element={<CreatePostPage />} />
+              <Route path="/messages" element={<MessagesPage />} />
               <Route path="/profile/:userId?" element={<ProfilePage />} />
               <Route path="*" element={<NotFoundPage />} />
             </Route>

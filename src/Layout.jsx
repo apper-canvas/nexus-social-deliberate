@@ -42,10 +42,10 @@ function Layout() {
   return (
 <div className="h-screen flex overflow-hidden bg-background">
       {/* Left Sidebar */}
-      <aside className="flex-shrink-0 w-56 bg-surface/95 backdrop-blur border-r border-gray-700 sticky top-0 h-full">
-        <div className="p-6">
+<aside className="flex-shrink-0 w-56 bg-surface/95 backdrop-blur border-r border-gray-700 sticky top-0 h-full">
+        <div className="p-6 h-full flex flex-col">
           {/* Logo */}
-<div className="flex items-center space-x-3 mb-8">
+          <div className="flex items-center space-x-3 mb-8">
             <div className="w-10 h-10 rounded-xl gradient-bg flex items-center justify-center">
               <span className="text-white font-bold text-lg">N</span>
             </div>
@@ -54,7 +54,7 @@ function Layout() {
 
           {/* Profile Preview */}
           {currentUser && (
-            <div className="mb-8 p-4 bg-gray-800/50 rounded-xl border border-gray-700">
+            <div className="mb-8 p-4 bg-gray-800/50 rounded-xl border border-gray-700 flex-shrink-0">
               <NavLink to="/profile" className="block group">
                 <div className="flex items-center space-x-3 mb-3">
                   <div className="relative">
@@ -88,41 +88,44 @@ function Layout() {
             </div>
           )}
 
-{/* Main Navigation */}
-          <nav className="space-y-2 mb-8">
-            {mainNavItems.map((item) => {
-              const isActive = item.path === '/' 
-                ? location.pathname === '/'
-                : location.pathname.startsWith(item.path)
-              
-              return (
-<NavLink
-                  key={item.path}
-                  to={item.path}
-                  className="flex items-center space-x-3 px-4 py-3 transition-all group"
-                >
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
+          {/* Scrollable Navigation Container */}
+          <div className="flex-1 overflow-y-auto scrollbar-hide">
+            {/* Main Navigation */}
+            <nav className="space-y-2 mb-8">
+              {mainNavItems.map((item) => {
+                const isActive = item.path === '/' 
+                  ? location.pathname === '/'
+                  : location.pathname.startsWith(item.path)
+                
+                return (
+                  <NavLink
+                    key={item.path}
+                    to={item.path}
+                    className="flex items-center space-x-3 px-4 py-3 transition-all group"
                   >
-                    <ApperIcon 
-                      name={item.icon} 
-                      size={18} 
-                      className={isActive ? 'text-white' : 'text-gray-400 group-hover:text-white'}
-                    />
-                  </motion.div>
-                  <span className={`font-medium text-sm transition-all ${
-                    isActive 
-                      ? 'text-transparent bg-gradient-to-r from-primary to-secondary bg-clip-text font-semibold' 
-                      : 'text-gray-400 group-hover:text-white'
-                  }`}>{item.label}</span>
-                </NavLink>
-              )
-            })}
-          </nav>
+                    <motion.div
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <ApperIcon 
+                        name={item.icon} 
+                        size={18} 
+                        className={isActive ? 'text-white' : 'text-gray-400 group-hover:text-white'}
+                      />
+                    </motion.div>
+                    <span className={`font-medium text-sm transition-all ${
+                      isActive 
+                        ? 'text-transparent bg-gradient-to-r from-primary to-secondary bg-clip-text font-semibold' 
+                        : 'text-gray-400 group-hover:text-white'
+                    }`}>{item.label}</span>
+                  </NavLink>
+                )
+              })}
+            </nav>
+          </div>
 
-          {/* Bottom Navigation */}
-          <div className="border-t border-gray-700 pt-4">
+          {/* Bottom Navigation - Fixed at bottom */}
+          <div className="border-t border-gray-700 pt-4 flex-shrink-0">
             <nav className="space-y-2">
               {bottomNavItems.map((item) => {
                 const isActive = location.pathname.startsWith(item.path)
@@ -138,7 +141,7 @@ function Layout() {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                       >
-<ApperIcon 
+                        <ApperIcon 
                           name={item.icon} 
                           size={18} 
                           className="text-gray-400 group-hover:text-white"
@@ -150,7 +153,7 @@ function Layout() {
                 }
                 
                 return (
-<NavLink
+                  <NavLink
                     key={item.path}
                     to={item.path}
                     className="flex items-center space-x-3 px-4 py-3 transition-all group"
